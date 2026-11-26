@@ -19,7 +19,7 @@ The first release computes scenario P&L for one **USD fixed-coupon bond** using:
 - P&L sign: scenario PV minus base PV.
 - Grid: precomputed at selected flat rates, with linear interpolation.
 - Ladder: key-rate DV01 buckets. For the initial bond, the bucket sensitivities sum to the model's parallel DV01. The scenario shock at each bucket is applied to its bucket sensitivity.
-- RDL sensitivities are the risk-model sensitivity feed. CMCore FO sensitivities are retained as a separate source for reconciliation. The example uses the RDL DV01 / convexity for Taylor and RDL key-rate DV01 for ladder.
+- FRTB sensitivities are the risk-model sensitivity feed. FO sensitivities are retained as a separate source for reconciliation. The example uses the DV01 / convexity for Taylor and key-rate DV01 for ladder.
 - The sample is deliberately small. Production implementations need approved pricing libraries, curve construction, calendars, day-count conventions, compounding conventions, accrued interest, coupon schedules, business-day adjustments, curve interpolation, market-data quality controls, scenario governance, and independent model validation.
 
 ## Architecture
