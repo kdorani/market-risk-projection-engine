@@ -1,2 +1,4 @@
-business_date,trade_id,position_id,product_type,issuer,currency,notional,coupon_rate,coupon_frequency,remaining_maturity_years,curve_id,day_count,pricing_method
-2026-11-24,TRD-BOND-0001,POS-BOND-0001,FIXED_RATE_BOND,DEMO_US_TREASURY,USD,10000000,0.06,1,5,USD_OIS,ACT/365,DCF_CONTINUOUS
+business_date,position_id,trade_id,book_id,desk_id,product_type,instrument_id,currency,notional,trade_date,source_system
+2026-11-24,POS-0001,TRD-BOND-0001,RATES_BOOK_A,USD_RATES,FIXED_RATE_BOND,DEMO-BOND-6.00-2031,USD,10000000,2024-03-12,POSITION_DATA
+2026-11-24,POS-0002,TRD-BOND-0002,RATES_BOOK_B,USD_RATES,FIXED_RATE_BOND,DEMO-BOND-3.50-2028,USD,-20000000,2026-02-03,POSITION_DATA
+2026-11-24,POS-0003,TRD-BOND-0003,RATES_BOOK_A,USD_RATES,FIXED_RATE_BOND,DEMO-BOND-4.25-2036,USD,5000000,2026-09-01,POSITION_DATA

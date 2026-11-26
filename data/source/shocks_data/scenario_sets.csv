@@ -1,0 +1,4 @@
+business_date,scenario_set,description,window_start,window_end,horizon_days,n_scenarios,data_origin
+2026-11-24,VAR_1D,"1-day historical shocks, most recent 260 business days",2025-11-10,2026-11-24,1,260,SYNTHETIC
+2026-11-24,SVAR_1D,1-day shocks from the stressed window (calibrated to resemble the 2022 rate-hike period),2022-03-01,2023-02-28,1,250,SYNTHETIC
+2026-11-24,STRESS_HYPO,Hypothetical parallel and curve-shape stresses,,,1,12,SYNTHETIC

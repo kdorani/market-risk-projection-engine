@@ -1,8 +1,17 @@
 .venv/
 .idea/
+.vscode/
 __pycache__/
 .pytest_cache/
+.ruff_cache/
 *.py[cod]
+*.egg-info/
+build/
+dist/
 data/warehouse/
 data/output/
+spark-warehouse/
+metastore_db/
+derby.log
 .sparkStaging/
+.env
