@@ -1,0 +1,2 @@
+business_date,trade_id,position_id,product_type,issuer,currency,notional,coupon_rate,coupon_frequency,remaining_maturity_years,curve_id,day_count,pricing_method
+2026-11-24,TRD-BOND-0001,POS-BOND-0001,FIXED_RATE_BOND,DEMO_US_TREASURY,USD,10000000,0.06,1,5,USD_OIS,ACT/365,DCF_CONTINUOUS

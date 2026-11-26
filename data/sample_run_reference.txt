@@ -1,0 +1,2 @@
+Illustrative base PV using continuous discounting: 10376591.64 USD
+See expected_sample_output.csv for the methodology/scenario comparison.

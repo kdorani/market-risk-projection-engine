@@ -1,0 +1,3 @@
+business_date,trade_id,sensitivity_type,sensitivity_value,unit,source_system
+2026-11-24,TRD-BOND-0001,DV01,4685.00,USD_PER_BP,CMCORE_FO
+2026-11-24,TRD-BOND-0001,CONVEXITY,23.80,YEARS_SQUARED,CMCORE_FO
