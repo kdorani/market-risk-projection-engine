@@ -87,7 +87,7 @@ A P&L vector is stored in long format rather than as a single array column. This
 | sensitivities_data | `frtb_sensitivities.csv` | Model sensitivities: parallel DV01, convexity, key-rate DV01 |
 | shocks_data | `scenario_shocks.csv` | Scenario shocks by risk-factor key |
 | position_data | `positions.csv` | Trade/position attributes |
-| sensitivities_data | `fo_sensitivities.csv` | Front-office sensitivity snapshot, separate from TRTB sensitivity |
+| sensitivities_data | `fo_sensitivities.csv` | Front-office sensitivity snapshot, separate from FRTB sensitivity |
 | Reference | `yield_curve_nodes.csv` | Base curve nodes |
 | Reference | `pricing_grid.csv` | Precomputed price grid for this instrument |
 
