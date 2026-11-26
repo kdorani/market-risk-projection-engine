@@ -1,0 +1,55 @@
+# Run configuration for the projection engine. Paths are relative to the project root.
+business_date: "2026-11-24"
+
+paths:
+  warehouse_dir: data/warehouse     # engine-owned Parquet tables (stg_*, map_*, pnl_*, ...)
+  output_dir: data/output           # step CSVs, run report, run metadata
+
+# One entry per upstream source. type: csv (local extracts) or jdbc (database).
+# For jdbc give url, schema and the names of env vars holding credentials, e.g.
+#   SENSITIVITIES_DATA: {type: jdbc, url: "jdbc:sqlserver://host:1433;databaseName=RISK", schema: dbo,
+#         user_env: SENS_DB_USER, password_env: SENS_DB_PASSWORD, driver: com.microsoft.sqlserver.jdbc.SQLServerDriver}
+sources:
+  POSITION_DATA:      {type: csv, path: data/source/position_data}       # positions + bond terms
+  SENSITIVITIES_DATA: {type: csv, path: data/source/sensitivities_data}  # FRTB SA + front-office sensitivities
+  SHOCKS_DATA:        {type: csv, path: data/source/shocks_data}         # risk factors, scenario sets, shocks
+  REFERENCE:          {type: csv, path: data/source/reference}           # curves, holidays, RF name mapping
+
+spark:
+  master: "local[*]"
+  shuffle_partitions: 8
+  log_level: WARN
+
+scenario_sets: [VAR_1D, SVAR_1D, STRESS_HYPO]
+methods: [FULL_REVALUATION, TAYLOR, GRID, LADDER]
+
+taylor:
+  delta_source: FRTB         # FRTB GIRR delta on FRTB vertices
+  gamma_source: FO           # front-office key-rate gamma on curve buckets
+  include_gamma: true
+
+grid:
+  axis: PARALLEL_SHIFT_BP    # coordinate = DV01-weighted average shock
+  nodes_bp: [-250, -200, -150, -100, -75, -50, -40, -30, -20, -10, -5, 0, 5, 10, 20, 30, 40, 50, 75, 100, 150, 200, 250]
+  extrapolation: LINEAR_FLAG # LINEAR_FLAG | FLAT_FLAG | ERROR
+
+ladder:
+  shifts_bp: [-250, -200, -150, -100, -75, -50, -40, -30, -20, -10, -5, 0, 5, 10, 20, 30, 40, 50, 75, 100, 150, 200, 250]
+  extrapolation: LINEAR_FLAG
+
+risk_measures:
+  var_scenario_sets: [VAR_1D, SVAR_1D]
+  var_confidence: 0.99
+  es_confidence: 0.975
+  quantile_method: KTH_WORST  # KTH_WORST (ceil(N*(1-c))-th worst loss) | NUMPY_LINEAR
+  scaling_horizon_days: 10    # reported 10-day VaR = sqrt(10) x 1-day VaR
+  hierarchy: [POSITION, BOOK, DESK, PORTFOLIO]
+
+reconciliation:
+  rel_tolerance: 0.01         # 1% of engine value ...
+  abs_tolerance: 0.50         # ... or USD 0.50 per bp, whichever is larger
+
+reporting:
+  explain_position: POS-0001
+  explain_scenarios: [SVAR_WORST, VAR_WORST, "STRESS_HYPO:HYP_011", "STRESS_HYPO:HYP_008"]
+  max_rows_console: 25
