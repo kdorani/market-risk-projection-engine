@@ -7,7 +7,7 @@ The first release computes scenario P&L for one **USD fixed-coupon bond** using:
 3. Grid-based valuation with linear interpolation
 4. Ladder-based key-rate sensitivity approximation
 
-> **Data disclaimer:** All records in `data/source/` are synthetic, illustrative data created for this public portfolio. They are not RBC data and do not represent actual RBC systems, schemas, models, market data, or methodologies. RDL, MDSS, CMCore and Reference are used only as the assumed upstream-system labels in this exercise.
+> **Data disclaimer:** All records in `data/source/` are synthetic, illustrative data created for this public portfolio. They are not real data and do not represent actual systems, schemas, models, market data, or methodologies.
 
 ## Scope and assumptions
 
@@ -25,7 +25,7 @@ The first release computes scenario P&L for one **USD fixed-coupon bond** using:
 ## Architecture
 
 ```text
-data/source/{rdl,mdss,cmcore,reference}  (CSV source extracts)
+data/source/{position source, shock source, sensitivity source, reference source}  (CSV source extracts)
                     |
              PySpark ingestion
                     |
@@ -84,10 +84,10 @@ A P&L vector is stored in long format rather than as a single array column. This
 
 | Source | File | Purpose |
 |---|---|---|
-| RDL | `frtb_sensitivities.csv` | Model sensitivities: parallel DV01, convexity, key-rate DV01 |
-| MDSS | `scenario_shocks.csv` | Scenario shocks by risk-factor key |
-| CMCore | `positions.csv` | Trade/position attributes |
-| CMCore | `fo_sensitivities.csv` | Front-office sensitivity snapshot, separate from RDL |
+| sensitivities_data | `frtb_sensitivities.csv` | Model sensitivities: parallel DV01, convexity, key-rate DV01 |
+| shocks_data | `scenario_shocks.csv` | Scenario shocks by risk-factor key |
+| position_data | `positions.csv` | Trade/position attributes |
+| sensitivities_data | `fo_sensitivities.csv` | Front-office sensitivity snapshot, separate from TRTB sensitivity |
 | Reference | `yield_curve_nodes.csv` | Base curve nodes |
 | Reference | `pricing_grid.csv` | Precomputed price grid for this instrument |
 
