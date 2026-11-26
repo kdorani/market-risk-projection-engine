@@ -65,10 +65,10 @@ SCHEMAS = {
 }
 
 SOURCE_FILES = {
-    "positions": SOURCE_DIR / "cmcore" / "positions.csv",
-    "fo_sensitivities": SOURCE_DIR / "cmcore" / "fo_sensitivities.csv",
-    "frtb_sensitivities": SOURCE_DIR / "rdl" / "frtb_sensitivities.csv",
-    "scenario_shocks": SOURCE_DIR / "mdss" / "scenario_shocks.csv",
+    "positions": SOURCE_DIR / "position_data" / "positions.csv",
+    "fo_sensitivities": SOURCE_DIR / "sensitivities_data" / "fo_sensitivities.csv",
+    "frtb_sensitivities": SOURCE_DIR / "sensitivities_data" / "frtb_sensitivities.csv",
+    "scenario_shocks": SOURCE_DIR / "shocks_data" / "scenario_shocks.csv",
     "yield_curve_nodes": SOURCE_DIR / "reference" / "yield_curve_nodes.csv",
     "pricing_grid": SOURCE_DIR / "reference" / "pricing_grid.csv",
 }
